@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     // Compile the .cpp file using a shell script
-                    sh 'g++ -o my_executable ${WORKSPACE}/main/hello2.cpp'
+                    sh 'g++ -o my_executable ${WORKSPACE}/main/hello-2.cpp'
                 }
             }
         }

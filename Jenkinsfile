@@ -1,44 +1,30 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone repository') {
-            steps {
-                git branch: 'main',
-                url: 'https://github.com/Arch2775/PES1UG21CS106_Jenkins.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 script {
-                    // Compile the .cpp file using a shell script
-                    sh 'g++ -o my_executable ${WORKSPACE}/main/hello-2.cpp'
+                    // python prer.py //error
+                    sh 'g++ PES1UG21CS106-1.cpp -o PES1UG21CS106-1'
                 }
             }
         }
-
         stage('Test') {
             steps {
                 script {
-                    // Print output of the compiled .cpp file
-                    sh './my_executable'
+                    sh './PES1UG21CS106-1'
                 }
             }
         }
-
-        stage('Deploy'){
+        stage('Deploy') {
             steps {
-                script {
-                    echo 'Deploy successful'
-                }
+                echo 'Deploying'
             }
         }
     }
-
     post {
-        failure {
-            echo 'Pipeline failed'
-        }
-    }
+          failure {
+              echo 'Pipeline failed'
+          }
+      }
 }
